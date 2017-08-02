@@ -9,16 +9,24 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-unix:!macx: LIBS += -lboost_system
-unix:!macx: LIBS += -ltbb
-unix:!macx: LIBS += -lpthread
+LIBS += -lpthread
 
 
 SOURCES += main.cpp \
     network.cpp
 
-DISTFILES += \
-    Network.pro.user
-
 HEADERS += \
     network.h
+
+
+LIBS += "-LC:/boost/boost_mingw_4_9/lib" \
+            -libboost_system-mgw49-mt-1_64
+
+
+INCLUDEPATH += $$PWD/../../../../../../boost/boost_mingw_4_9/include/boost-1_64
+DEPENDPATH += $$PWD/../../../../../../boost/boost_mingw_4_9/include/boost-1_64
+
+
+
+INCLUDEPATH += $$PWD/../../../../../../tbb/include
+DEPENDPATH += $$PWD/../../../../../../tbb/include
